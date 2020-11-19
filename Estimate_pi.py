@@ -89,7 +89,7 @@ def plot_rain_drops_plotly(drops_in_circle, drops_out_of_circle, pi_estimate):
                       )
     fig.show()
 
-def rain(number_of_drops=1000, vis='Web',length_of_field=1, plot=True, format='pdf', dynamic=False):
+def rain(number_of_drops=1000, vis='Web',length_of_field=1, plot=True, format='pdf', dynamic=0):
     """
     Function to make rain drops.
     """
@@ -132,21 +132,27 @@ if __name__ == "__main__":
     # Run the script from cli
     parser = argparse.ArgumentParser(description='Number of Drops.')
     parser.add_argument('Drops', type=int,
+                        nargs='?',
+                        default=100,
                         help='Number of Drops')
     parser.add_argument('Visualisation',
                         default='plotly',
                         nargs='?',
                         help='Visualisation Method - Web / Save As')
-
+    parser.add_argument('Dynamic',
+                        type=int,
+                        default=0,
+                        nargs='?',
+                        help='Save pic after each iternation?  - 1 / 0')
     args = parser.parse_args()
     number_of_drops = args.Drops
     visualisation = args.Visualisation
 
     print("Number of Drops = %s" % number_of_drops)
     print("Visualisation Method - %s"% visualisation)
+    print("Dynamic Visualisation - %s" % args.Dynamic)
 
-    # r = rain(number_of_drops, plot=True, format='png', dynamic=True)
-    r = rain(number_of_drops, vis=visualisation, plot=True, format='png', dynamic=False, )
+    r = rain(number_of_drops, vis=visualisation, plot=True, format='png', dynamic=args.Dynamic, )
     # Print to screen:
     print ("----------------------")
     print ("%s drops" % number_of_drops)
