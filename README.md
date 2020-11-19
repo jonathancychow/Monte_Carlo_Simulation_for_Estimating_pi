@@ -2,9 +2,29 @@
 
 This repo contains some code that simulates rain fall in a square field and counts the number of drops that fall in an inscribed circle so as to estimate pi.
 
-## Usage
+## Python Library Installation 
+- Install Python 3.7 or above 
+- Run the command prompt with admin privilege and install the Python package Poetry as follow: 
+```bash
+pip install poetry
+```
+- Restart the command prompt and cd to the repo directory 
+- Install the required libraries by invoking poetry 
+```bash
+poetry install 
+``` 
 
-    python Estimate_pi.py 500
+## Usage
+- Install poetry following instruction from above, then invoke the poetry shell  
+```bash
+poetry shell 
+``` 
+- Start simulation
+```bash
+python Estimate_pi.py 500
+``` 
+
+    
 
 This returns:
 
