@@ -3,6 +3,9 @@ from __future__ import division
 from random import random
 from math import pi
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import numpy as np
 """
 Script to simulate rain in a square field. Counting the number of rain drops in the inscribed circle of radius equal to the length of the field. The ratio of the number of drops in the circle to the total number of drops gives $\pi$.
 """
@@ -37,6 +40,63 @@ def plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field=1, for
     plt.savefig("%s_drops.%s" % (number_of_drops, format))
 
 
+def plot_rain_drops_plotly(drops_in_circle, drops_out_of_circle, pi_estimate):
+    """ Function to draw rain drops """
+    number_of_drops_in_circle = len(drops_in_circle)
+    number_of_drops_out_of_circle = len(drops_out_of_circle)
+    number_of_drops = number_of_drops_in_circle + number_of_drops_out_of_circle
+    fig = make_subplots(rows=2,
+                        cols=1,
+                        subplot_titles=('drops landed in circule', 'pi vs iternation')
+                        )
+    fig.add_trace(go.Scatter(x=[e[0] for e in drops_in_circle],
+                             y=[e[1] for e in drops_in_circle],
+                             mode='markers',
+                             name="In Circule"
+                             ),
+                  row=1,
+                  col=1
+                  )
+    fig.add_trace(go.Scatter(x=[e[0] for e in drops_out_of_circle],
+                             y=[e[1] for e in drops_out_of_circle],
+                             mode='markers',
+                             name="Out of Circule"
+                             ),
+                  row=1,
+                  col=1
+                  )
+
+    fig.add_trace(go.Scatter(y=pi_estimate,
+                             x=np.arange(1, number_of_drops + 1),
+                             mode='lines',
+                             name="Pi Estimate"
+                             ),
+                  row=2,
+                  col=1
+                  )
+
+    fig.add_shape(type="line",
+                  x0=0, y0=np.pi, x1=number_of_drops + 1, y1=np.pi,
+                  line=dict(color="Red", width=3),
+                  row=2,
+                  col=1
+                  )
+    fig.update_layout(template="plotly_dark",
+                      width=800,
+                      height=800,
+                      title="%s drops: %s landed in circle, estimating pi as %.4f." % (
+                      number_of_drops, number_of_drops_in_circle, 4 * number_of_drops_in_circle / number_of_drops)
+                      )
+    fig.show()
+    # plt.figure()
+    # plt.xlim(-length_of_field / 2, length_of_field / 2)
+    # plt.ylim(-length_of_field / 2, length_of_field / 2)
+    # plt.scatter([e[0] for e in drops_in_circle], [e[1] for e in drops_in_circle], color='blue', label="Drops in circle")
+    # plt.scatter([e[0] for e in drops_out_of_circle], [e[1] for e in drops_out_of_circle], color='black', label="Drops out of circle")
+    # plt.legend(loc="center")
+    # plt.title("%s drops: %s landed in circle, estimating $\pi$ as %.4f." % (number_of_drops, number_of_drops_in_circle, 4 * number_of_drops_in_circle / number_of_drops))
+    # plt.savefig("%s_drops.%s" % (number_of_drops, format))
+
 def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynamic=False):
     """
     Function to make rain drops.
@@ -70,7 +130,8 @@ def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynam
     if plot and not dynamic:
         # If the plot option is passed and matplotlib is installed this plots
         # the final set of drops
-        plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field, format)
+        # plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field, format)
+        plot_rain_drops_plotly(drops_in_circle, drops_out_of_circle, pi_estimate)
 
     return [number_of_drops_in_circle, number_of_drops]
 
@@ -82,7 +143,7 @@ if __name__ == "__main__":
     if len(argv) > 1:  # If an argument is passed then change number of drops to be simulated.
         number_of_drops = eval(argv[1])
     #  Two sets of simulations (comment out the unwanted one).
-    #r = rain(number_of_drops, plot=True, format='png', dynamic=True)
+    # r = rain(number_of_drops, plot=True, format='png', dynamic=True)
     r = rain(number_of_drops, plot=True, format='png', dynamic=False)
     # Print to screen:
     print "----------------------"
