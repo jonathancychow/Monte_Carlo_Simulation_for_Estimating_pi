@@ -77,7 +77,7 @@ def plot_rain_drops_plotly(drops_in_circle, drops_out_of_circle, pi_estimate):
                   )
     fig.add_shape(type="line",
                   x0=0, y0=np.pi, x1=number_of_drops + 1, y1=np.pi,
-                  line=dict(color="Red", width=3),
+                  line=dict(color="Red", width=1),
                   row=2,
                   col=1
                   )

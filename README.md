@@ -38,9 +38,9 @@ This returns:
 
 ![500 drops](500_drops.png)
 
-If we have 100,000 drops we get:
+If we have 10,000 drops we get:
 
-![100,000 drops](100000_drops.png)
+![100,000 drops](10000_drops.png)
 
 If we have 1,000,000 drops we get:
 
