@@ -113,7 +113,7 @@ def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynam
         else:
             drops_out_of_circle.append(d)
         if dynamic:  # The dynamic option if set to True will plot every new drop (this can be used to create animations of the simulation)
-            print "Plotting drop number: %s" % (k + 1)
+            print ("Plotting drop number: %s" % (k + 1))
             plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field, format)
         pi_estimate.append(4 * number_of_drops_in_circle / (k + 1))  # This updates the list with the newest estimate for pi.
     # Plot the pi estimates
@@ -146,8 +146,8 @@ if __name__ == "__main__":
     # r = rain(number_of_drops, plot=True, format='png', dynamic=True)
     r = rain(number_of_drops, plot=True, format='png', dynamic=False)
     # Print to screen:
-    print "----------------------"
-    print "%s drops" % number_of_drops
-    print "pi estimated as:"
-    print "\t%s" % (4 * r[0] / r[1])
-    print "----------------------"
+    print ("----------------------")
+    print ("%s drops" % number_of_drops)
+    print ("pi estimated as:")
+    print ("\t%s" % (4 * r[0] / r[1]))
+    print ("----------------------")
