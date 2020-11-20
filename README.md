@@ -21,7 +21,7 @@ poetry shell
 ``` 
 - Start simulation
 ```bash
-python Estimate_pi.py 500
+python src\Estimate_pi.py 500
 ``` 
 
     
@@ -36,15 +36,15 @@ This returns:
 
 *but* also outputs a plot:
 
-![500 drops](500_drops.png)
+![500 drops](img/500_drops.png)
 
 If we have 10,000 drops we get:
 
-![100,000 drops](10000_drops.png)
+![100,000 drops](img/10000_drops.png)
 
 If we have 1,000,000 drops we get:
 
-![1,000,000 drops](1000000_drops.png)
+![1,000,000 drops](img/1000000_drops.png)
 
 # License Information
 
