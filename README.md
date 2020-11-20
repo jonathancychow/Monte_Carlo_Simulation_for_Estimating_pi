@@ -45,6 +45,11 @@ If we have 10,000 drops we get:
 If we have 1,000,000 drops we get:
 
 ![1,000,000 drops](img/1000000_drops.png)
+- Start animation
+```bash
+python src\animation.py localhost 8000
+``` 
+- You could then open a browser and see the animation at localhost:8000
 
 # License Information
 
