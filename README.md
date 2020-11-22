@@ -44,6 +44,8 @@ python src\animation.py localhost 8000
 cd src && jupyter notebook
 ``` 
 - A notebook will launch automatically, click on estimate_pi_notebook.ipynb 
+- If you want to quickly interact with a pre-built Jupyter Notebook, you can 
+click [here](https://mybinder.org/v2/gh/jonathancychow/Monte_Carlo_Simulation_for_Estimating_pi/master?filepath=src%2Festimate_pi_notebook.ipynb), I have set it all up in MyBinder. 
 
 
 ![500 drops](img/500_drops.png)
