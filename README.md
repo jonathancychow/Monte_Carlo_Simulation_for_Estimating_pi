@@ -2,6 +2,8 @@
 
 This repo contains some code that simulates rain fall in a square field and counts the number of drops that fall in an inscribed circle so as to estimate pi.
 
+![animation gif](img/animation.gif)
+
 ## Python Library Installation 
 - Install Python 3.7 or above 
 - Run the command prompt with admin privilege and install the Python package Poetry as follow: 
@@ -13,19 +15,17 @@ pip install poetry
 ```bash
 poetry install 
 ``` 
-
-## Usage
 - Install poetry following instruction from above, then invoke the poetry shell  
 ```bash
 poetry shell 
 ``` 
-- Start simulation
+## Usage
+
+#### Start simulation
+
 ```bash
 python src\Estimate_pi.py 500
 ``` 
-
-    
-
 This returns:
 
     ----------------------
@@ -33,8 +33,18 @@ This returns:
     pi estimated as:
         3.112
     ----------------------
+#### Start animation
+```bash
+python src\animation.py localhost 8000
+``` 
+- You could then open a browser and see the animation at localhost:8000
 
-*but* also outputs a plot:
+#### Start Jupyter Notebook
+```bash
+cd src && jupyter notebook
+``` 
+- A notebook will launch automatically, click on estimate_pi_notebook.ipynb 
+
 
 ![500 drops](img/500_drops.png)
 
@@ -45,11 +55,6 @@ If we have 10,000 drops we get:
 If we have 1,000,000 drops we get:
 
 ![1,000,000 drops](img/1000000_drops.png)
-- Start animation
-```bash
-python src\animation.py localhost 8000
-``` 
-- You could then open a browser and see the animation at localhost:8000
 
 # License Information
 
